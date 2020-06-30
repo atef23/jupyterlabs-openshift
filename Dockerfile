@@ -5,11 +5,16 @@ RUN apt-get update && apt-get -y update
 RUN useradd -ms /bin/bash jupyter
 USER jupyter
 WORKDIR /home/jupyter
-RUN pip3 -q install pip
-RUN pip3 install jupyter --user jupyter --no-warn-script-location
-RUN pip3 install jupyterlab --user jupyter --no-warn-script-location
-RUN pip3 install --upgrade notebook --user jupyter --no-warn-script-location
-RUN pip3 install --upgrade jupyterthemes --user jupyter --no-warn-script-location
+
+RUN pip install jupyterlab --user jupyter --no-warn-script-location
+# RUN pip3 -q install pip
+# RUN pip3 install jupyter --user jupyter --no-warn-script-location
+# RUN pip3 install jupyterlab --user jupyter --no-warn-script-location
+# RUN pip3 install --upgrade notebook --user jupyter --no-warn-script-location
+# RUN pip3 install --upgrade jupyterthemes --user jupyter --no-warn-script-location
+
+
+
 RUN chmod -R 775 /home/jupyter
 ENV PATH="/home/jupyter/.local/bin:${PATH}"
 
